@@ -190,7 +190,7 @@ const Principal = () => {
         <Card>
           <Title>Risotto de setas (Vegano)</Title>
           <Not>INGREDIENTES</Not>
-          <Lit3><b>* Primero ingresa el número y luego oprime sumar</b></Lit3>
+          <Lit3><b>* Primero ingresa la cantidad de ingrediente que deseas y luego oprime sumar</b></Lit3>
           <Opt>
             <BtnSel>
               <Utl onClick={() => selectAll()}>Seleccionar todo</Utl>

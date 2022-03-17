@@ -1,12 +1,12 @@
 import "@testing-library/jest-dom";
 import { loginSincrono } from "../Redux/actions/actionLogin";
-import { registerProductAsync } from "../Redux/actions/actionProducts";
 import { loginReducer } from "../Redux/reducers/loginReducer";
 import { productsReducer } from "../Redux/reducers/productsReducer";
+import { registerReducer } from "../Redux/reducers/registerReducer";
 import { types, typesProducts } from "../Redux/types/types";
 
 describe("Pruebas unitarias", () => {
-  // 1 Test de types de estado de usuario
+  // T1 Test de types de estado de usuario
   test("Comparar types1", () => {
     expect(types).toEqual({
       login: "login",
@@ -14,7 +14,7 @@ describe("Pruebas unitarias", () => {
       logout: "logout",
     });
   });
-  // 2 Test de types de productos
+  // T2 Test de types de productos
   test("Comparar types2", () => {
     expect(typesProducts).toEqual({
       add: "add",
@@ -23,7 +23,7 @@ describe("Pruebas unitarias", () => {
       delete: "delete",
     });
   });
-  // 3 Test de reducers login
+  // T3 Test de reducers login
   test("Debe funcionar el login", () => {
     const initialState = {};
     const action = {
@@ -39,7 +39,7 @@ describe("Pruebas unitarias", () => {
       name: "Camilo",
     });
   });
-  // 4 Test de reducers logout
+  // T4 Test de reducers logout
   test("Cerrar sesión - logout", () => {
     const initState = [];
 
@@ -50,7 +50,25 @@ describe("Pruebas unitarias", () => {
     const state = loginReducer(initState, action);
     expect(state).toEqual([]);
   });
-  // 5 Test de actions, activar action por defecto
+  // T5 Test de registro
+  test("Validar registro de usuario", () => {
+    const initialState = {};
+    const action = {
+      type: types.register,
+      payload: {
+        email: "Camilo@test.com",
+        name: "Camilo",
+        password: "Camilo123",
+      },
+    };
+    const state = registerReducer(initialState, action);
+    expect(state).toEqual({
+      email: "Camilo@test.com",
+      name: "Camilo",
+      password: "Camilo123",
+    });
+  });
+  // T6 Test de actions, activar action por defecto
   test("Revisar el state por default", () => {
     const initState = {
       id: "abc",
@@ -64,7 +82,7 @@ describe("Pruebas unitarias", () => {
     const state = loginReducer(initState, action);
     expect(state).toEqual(initState);
   });
-  // 6 Test acciones asíncronas en actionLogin
+  // T7 Test acciones asíncronas en actionLogin
   test("Validar login sincronico", () => {
     const id = "ABC";
     const displayname = "Camilo";
@@ -79,7 +97,7 @@ describe("Pruebas unitarias", () => {
       },
     });
   });
-  // 7 Test de agregar ingrediente
+  // T8 Test de agregar ingrediente
   test("Validar adición de ingredientes", () => {
     const initState = [];
 
@@ -107,5 +125,20 @@ describe("Pruebas unitarias", () => {
       ],
     });
   });
-  // 8 Test 
+  // T9 Test de borrar ingrediente
+  test("Validar ingrediente borrado", () => {
+    const initState = {
+      ingredients: [{}],
+    };
+
+    const action = {
+      type: typesProducts.delete,
+      payload: {},
+    };
+
+    const state = productsReducer(initState, action);
+    expect(state).toEqual({
+      ingredients: [{}],
+    });
+  });
 });
