@@ -35,6 +35,7 @@ import {
   Inp,
   Imag,
   BtnEdit,
+  Lab,
 } from "../styles/Principal_styles";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -189,6 +190,7 @@ const Principal = () => {
         <Card>
           <Title>Risotto de setas (Vegano)</Title>
           <Not>INGREDIENTES</Not>
+          <Lit3><b>* Primero ingresa el número y luego oprime sumar</b></Lit3>
           <Opt>
             <BtnSel>
               <Utl onClick={() => selectAll()}>Seleccionar todo</Utl>
@@ -204,12 +206,14 @@ const Principal = () => {
             ingredient.ingredients.map((e) => (
               <Det key={e.product}>
                 <BtnChe>
+                  <Lab>
                   <BtnPro
                     type="checkbox"
                     name="selected"
                     value={e.price * mul}
                     onClick={checked}
                   ></BtnPro>
+                  Sumar</Lab>
                 </BtnChe>
                 <BtnChe2>
                   <Inp

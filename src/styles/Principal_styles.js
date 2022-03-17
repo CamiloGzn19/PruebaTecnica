@@ -172,7 +172,7 @@ export const Lit2 = styled.h5`
 
 export const Lit3 = styled.h5`
   margin-left: 30px;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 15px;
   margin-right: 30px;
   color: black;
@@ -186,6 +186,11 @@ export const Lit3 = styled.h5`
 export const BtnPro = styled.input`
   width: 20px;
   height: 20px;
+  margin-left: 8px;
+`;
+
+export const Lab = styled.label`
+  font-size: 12px;
   margin-left: 20px;
 `;
 
