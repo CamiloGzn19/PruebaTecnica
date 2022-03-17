@@ -105,6 +105,7 @@ const Principal = () => {
     setTotal(0);
     setSubtotal(0);
     setItems(0);
+    setMul(1)
   };
 
   // Multiplicar n veces el valor
@@ -206,7 +207,7 @@ const Principal = () => {
                   <BtnPro
                     type="checkbox"
                     name="selected"
-                    value={e.price}
+                    value={e.price * mul}
                     onClick={checked}
                   ></BtnPro>
                 </BtnChe>
@@ -224,7 +225,7 @@ const Principal = () => {
                   <Art3>{e.quantity}</Art3>
                 </Esp>
                 <Pef>
-                  <Priz>{(e.price * mul).toFixed(2)} $</Priz>
+                  <Priz>{e.price} $</Priz>
                 </Pef>
               </Det>
             ))
